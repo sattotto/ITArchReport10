@@ -44,12 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     try {
-                        DiceResult = myDice.getDiceRollResult();
+                        //DiceResult = myDice.getDiceRollResult();
+                        showDiceResult(myDice.getDiceRollResult());
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
                 }
-            });
+            }).show();
 
         } catch (RemoteException e) {
             alert.setMessage("さいころをご用意できませんでした").show();
@@ -63,12 +64,13 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder DiceDialog = new AlertDialog.Builder(this).setPositiveButton("おけ", null);
 
         String resultText = "";
-        for (int i = 0;i < DiceResult.length;i++) {
-            resultText += DiceResult[i];
-            if (i == DiceResult.length) break;
+        for (int i = 0;i < DiceArray.length;i++) {
+            resultText += DiceArray[i];
+            if (i == DiceArray.length - 1) break;
+            resultText += ", ";
         }
 
-        DiceDialog.setMessage("結果は " + resultText + "でした．");
+        DiceDialog.setMessage("結果は " + resultText + " でした．").show();
         TextView resultTextView = findViewById(R.id.resultTextView);
         resultTextView.setText(resultText);
     }
