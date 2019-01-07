@@ -17,8 +17,13 @@ public class DiceRoll extends Service {
 
     private final DiceRollAIDL.Stub mBinder = new DiceRollAIDL.Stub() {
         @Override
-        public int getDiceRoll() throws RemoteException {
+        public int getDiceCount() throws RemoteException {
             return DiceCount;
+        }
+
+        @Override
+        public int getDiceType() throws RemoteException {
+            return DiceType;
         }
 
         @Override
