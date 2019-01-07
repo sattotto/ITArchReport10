@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".DiceRolls"
+            android:process=":dice"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.github.sattotto.itarchreport10.service.DiceRoll"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
