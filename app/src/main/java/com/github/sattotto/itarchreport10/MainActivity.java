@@ -16,8 +16,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private int[] DiceResult;
     private DiceRollAIDL myDice = null;
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     try {
-                        //DiceResult = myDice.getDiceRollResult();
                         showDiceResult(myDice.getDiceRollResult());
                     } catch (RemoteException e) {
                         e.printStackTrace();
@@ -55,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (RemoteException e) {
             alert.setMessage("さいころをご用意できませんでした").show();
             e.printStackTrace();
+        } catch (NumberFormatException e) {
+            alert.setPositiveButton("ok", null);
+            alert.setMessage("さいころをご用意できませんでした").show();
         }
 
 

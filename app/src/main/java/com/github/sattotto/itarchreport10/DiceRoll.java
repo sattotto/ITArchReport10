@@ -35,12 +35,6 @@ public class DiceRoll extends Service {
         @Override
         public int[] getDiceRollResult() throws RemoteException {
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             if (DiceCount > 10) {
                 DiceResult = new int[1];
                 DiceResult[0] = 0;
